@@ -32,3 +32,12 @@ for(i in 1:nrow(outmat)){
 low.points <- which(outmat, arr.ind = T)
 sum(mat.store[low.points] + 1) # 588
 
+
+# part b)
+# All points < 9 are part of some basin, and lead towards nearest low.point(s).
+
+library(raster)
+library(igraph)
+adj <- raster(mat.store!=9)
+basins <- as.matrix(clump(adj, directions = 4)) # a matrix of basins
+
