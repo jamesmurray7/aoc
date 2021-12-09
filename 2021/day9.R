@@ -43,3 +43,4 @@ basins <- as.matrix(clump(adj, directions = 4)) # a matrix of basins
 basins.coordinates <- lapply(1:max(basins, na.rm = T), function(x) which(basins == x, arr.ind = T))
 basins.size <- lapply(basins.coordinates, nrow)
 prod(sort(do.call(c, basins.size), decreasing = T)[1:3])
+image(basins, col = hcl.colors(max(basins,na.rm=T)))
